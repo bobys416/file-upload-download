@@ -25,7 +25,7 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 
 	if err := r.ParseMultipartForm(MAX_UPLOAD_SIZE); err != nil {
 
-		http.Error(w, "The uploaded file is too big. Please choose an file that's less than 1MB in size", http.StatusBadRequest)
+		http.Error(w, "The uploaded file is too big. Please choose an file that's less than 10MB in size", http.StatusBadRequest)
 		return
 
 	}
@@ -78,7 +78,7 @@ func uploadMultipleFiles(w http.ResponseWriter, r *http.Request) {
 
 	if err := r.ParseMultipartForm(MAX_MULTIPLE_UPLOAD_SIZE); err != nil {
 
-		http.Error(w, "The uploaded file is too big. Please choose an file that's less than 1MB in size", http.StatusBadRequest)
+		http.Error(w, "The uploaded file is too big. Please choose an file that's less than 10MB in size", http.StatusBadRequest)
 		return
 
 	}
@@ -91,7 +91,7 @@ func uploadMultipleFiles(w http.ResponseWriter, r *http.Request) {
 		// a specified value, use the http.MaxBytesReader() method
 		// before calling ParseMultipartForm()
 		if fileHeader.Size > MAX_UPLOAD_SIZE {
-			http.Error(w, fmt.Sprintf("The uploaded file is too big: %s. Please use an image less than 1MB in size", fileHeader.Filename), http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("The uploaded file is too big: %s. Please use an image less than 10MB in size", fileHeader.Filename), http.StatusBadRequest)
 			return
 		}
 
